@@ -25,17 +25,18 @@ class Individuo:
             x1, y1 = self.cromossomo[i] // N, self.cromossomo[i] % N
             dx, dy = abs(x1 - x), abs(y1 - y)
             if dx == 1 and dy == 2 or dx == 2 and dy == 1:
-                movimentos += 1
-                x, y = x1, y1
-                tabuleiro[x][y] = i + 1
+                if tabuleiro[x1][y1] == 0:
+                    movimentos += 1
+                    x, y = x1, y1
+                    tabuleiro[x][y] = i + 1
         return 1.0 / (movimentos + 1),
 
     def cruzamento(self, outro):
         # realiza o cruzamento com outro indivíduo
         ponto = random.randrange(1, N * N - 1)
         return (
-            Individuo(self.cromossomo[:ponto] + outro.cromossomo[ponto:]),
-            Individuo(outro.cromossomo[:ponto] + self.cromossomo[ponto:]),
+            Individuo(self.cromossomo[:ponto] + [gene for gene in outro.cromossomo if gene not in self.cromossomo[:ponto]]),
+            Individuo(outro.cromossomo[:ponto] + [gene for gene in self.cromossomo if gene not in outro.cromossomo[:ponto]]),
         )
 
     def mutacao(self):
@@ -98,7 +99,6 @@ melhor_individuo = algoritmo_genetico(populacao_inicial, fitness_limite, geracoe
 print("Melhor indivíduo encontrado:")
 print(melhor_individuo.cromossomo)
 print("Fitness:", melhor_individuo.fitness()[0])
-
 
 
 
