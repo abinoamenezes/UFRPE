@@ -1,3 +1,5 @@
+
+
 import random
 
 # define o tamanho do tabuleiro
@@ -29,7 +31,7 @@ class Individuo:
                     movimentos += 1
                     x, y = x1, y1
                     tabuleiro[x][y] = i + 1
-        return 1.0 / (movimentos + 1),
+        return  movimentos + 1
 
     def cruzamento(self, outro):
         # realiza o cruzamento com outro indivíduo
@@ -55,7 +57,7 @@ def algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite):
         fitness = [individuo.fitness() for individuo in populacao]
 
         # verifica se atingimos o fitness limite
-        if max(fitness)[0] >= fitness_limite:
+        if max(fitness) == fitness_limite:
             return max(populacao, key=lambda x: x.fitness())
 
         # seleciona os pais para cruzamento
@@ -78,7 +80,11 @@ def algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite):
         # seleciona os sobreviventes
         populacao = pais + filhos
         fitness = [individuo.fitness() for individuo in populacao]
-        populacao = [populacao[i] for i in sorted(range(len(fitness)), key=lambda x: fitness[x][0], reverse=True)[:len(pais)]]
+        #ordenar a população em ordem decrescente da aptidão
+        #se quiser fazer elitismo, selecionar de 0 a len(pais) da populacao ordenada (ex: populacao[0:len(pais)] )
+        popOrdenada = sorted(populacao, key=lambda x: x.fitness(), reverse=True)
+        populacao = popOrdenada[0:len(pais)] #elitismo
+        #populacao = [populacao[i] for i in sorted(range(len(fitness)), key=lambda x: fitness[x][0], reverse=True)[:len(pais)]]
 
     # retorna o melhor indivíduo encontrado
     return max(populacao, key=lambda x: x.fitness())
@@ -89,8 +95,8 @@ def algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite):
 populacao_inicial = [Individuo() for _ in range(10)]
 
 # define os parâmetros do algoritmo genético
-fitness_limite = 1.0
-geracoes_limite = 1000
+fitness_limite = 64
+geracoes_limite = 200000
 
 # roda o algoritmo genético
 melhor_individuo = algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite)
@@ -98,7 +104,7 @@ melhor_individuo = algoritmo_genetico(populacao_inicial, fitness_limite, geracoe
 # imprime o resultado
 print("Melhor indivíduo encontrado:")
 print(melhor_individuo.cromossomo)
-print("Fitness:", melhor_individuo.fitness()[0])
+print("Fitness:", melhor_individuo.fitness())
 
 
 
