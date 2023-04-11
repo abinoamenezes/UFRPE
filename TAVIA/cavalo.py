@@ -7,13 +7,18 @@ N = 8
 
 # define a classe de um indivíduo
 class Individuo:
+
+    movimentos = [(2,1), (1,2), (-1,2), (-2,1), (-2,-1), (-1,-2), (1,-2), (2,-1)]
+
     def __init__(self, cromossomo=None):
         if cromossomo is None:
             # gera um cromossomo sequencial
             self.cromossomo = list(range(N*N))
             #embaralhar cromossomo
-
             random.shuffle(self.cromossomo)
+            
+            # gera uma lista de movimentos aleatórios
+            self.movimentos_aleatorios = [random.choice(Individuo.movimentos) for _ in range(N*N)]
         else:
             self.cromossomo = cromossomo
 
@@ -96,7 +101,7 @@ populacao_inicial = [Individuo() for _ in range(10)]
 
 # define os parâmetros do algoritmo genético
 fitness_limite = 64
-geracoes_limite = 200000
+geracoes_limite = 100000
 
 # roda o algoritmo genético
 melhor_individuo = algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite)
