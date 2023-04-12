@@ -97,11 +97,11 @@ def algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite):
 
 
 # cria a população inicial
-populacao_inicial = [Individuo() for _ in range(10)]
+populacao_inicial = [Individuo() for _ in range(500)]
 
 # define os parâmetros do algoritmo genético
 fitness_limite = 64
-geracoes_limite = 100000
+geracoes_limite = 200
 
 # roda o algoritmo genético
 melhor_individuo = algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite)
