@@ -84,12 +84,10 @@ def algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite):
 
         # seleciona os sobreviventes
         populacao = pais + filhos
-        fitness = [individuo.fitness() for individuo in populacao]
-        #ordenar a população em ordem decrescente da aptidão
-        #se quiser fazer elitismo, selecionar de 0 a len(pais) da populacao ordenada (ex: populacao[0:len(pais)] )
+        fitness = [individuo.fitness() for individuo in populacao] 
         popOrdenada = sorted(populacao, key=lambda x: x.fitness(), reverse=True)
         populacao = popOrdenada[0:len(pais)] #elitismo
-        #populacao = [populacao[i] for i in sorted(range(len(fitness)), key=lambda x: fitness[x][0], reverse=True)[:len(pais)]]
+        
 
     # retorna o melhor indivíduo encontrado
     return max(populacao, key=lambda x: x.fitness())
