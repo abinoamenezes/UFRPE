@@ -1,5 +1,3 @@
-
-
 import random
 
 # define o tamanho do tabuleiro
@@ -91,8 +89,6 @@ def algoritmo_genetico(populacao_inicial, fitness_limite, geracoes_limite):
 
     # retorna o melhor indivíduo encontrado
     return max(populacao, key=lambda x: x.fitness())
-
-
 
 # cria a população inicial
 populacao_inicial = [Individuo() for _ in range(500)]
