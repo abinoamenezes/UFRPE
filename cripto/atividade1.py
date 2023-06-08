@@ -6,7 +6,7 @@ def cleaning (text):
     textoLimpo="".join(textoLimpo)
     print(textoLimpo)
    
-cleaning("123456 Abinoa ddd asasa ****8 !11111122 3 4 ")
+cleaning("123456 Abinoa ddd asasa ------ === +++++ 4294723****8 !11111122 3 4 ")
 
 
 
