@@ -4,10 +4,9 @@ def cleaning (text):
         if c.isalpha():
             textoLimpo.append(c.lower())
     textoLimpo="".join(textoLimpo)
-    print(textoLimpo)
+    print("texto limpo: " + textoLimpo)
    
-cleaning("123456 Abinoa ddd asasa ------ === +++++ 4294723****8 !11111122 3 4 ")
-
+cleaning(input("Digite aqui o texto que será limpado: "))
 
 
 
