@@ -5,9 +5,12 @@ def cripto(m,k ):
         valor= (ord(letra) - ord("a") + k) % 26 + ord("a") 
         textoCripto.append(chr(valor))
     textoCripto="".join(textoCripto)
-    print(textoCripto)
+    return textoCripto
     
 
-cripto("fernandaechataz", 3)
+textoCripto= cripto("fernandaechataz", 3)
+
+
+
 
 
