@@ -1,4 +1,4 @@
-from unidecode import unidecode #essa biblioteca retira os acentos das letras. Precisa ser instalada pelo PIP
+from unidecode import unidecode #essa biblioteca retira os acentos das letras e o cedilha. Precisa ser instalada pelo PIP
 
 def cleaning (text):
     textoLimpo=[]
