@@ -1,4 +1,6 @@
 import random
+from unidecode import unidecode #essa biblioteca retira os acentos das letras e o cedilha. Precisa ser instalada pelo PIP
+
 
 def cleaning (text):
     textoLimpo=[]
@@ -6,6 +8,7 @@ def cleaning (text):
         if c.isalpha():
             textoLimpo.append(c.lower())
     textoLimpo="".join(textoLimpo)
+    textoLimpo=unidecode(textoLimpo)
     return  textoLimpo
 
 
