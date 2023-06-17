@@ -4,9 +4,9 @@ def cleaning (text):
         if c.isalpha():
             textoLimpo.append(c.lower())
     textoLimpo="".join(textoLimpo)
-    print("texto limpo: " + textoLimpo)
+    return "texto limpo: " + textoLimpo
    
-cleaning(input("Digite aqui o texto que será limpado: "))
+print(cleaning(input("Digite aqui o texto que será limpado: ")))
 
 
 
