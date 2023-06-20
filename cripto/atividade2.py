@@ -94,6 +94,6 @@ def comparacaoDeFrequencia():
             chave_mais_prox = key
             menor_diferenca = diferenca
 
-    print("Chave com valor mais proximo de 0.073:", chave_mais_prox)
+    print("Chave de deslocamento: ", chave_mais_prox)
     
 comparacaoDeFrequencia()
